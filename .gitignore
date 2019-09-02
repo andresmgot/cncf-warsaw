@@ -1,0 +1,6 @@
+go.mod
+go.sum
+demo2/auth
+demo2/tls*
+todo-app/backend/node_modules
+todo-app/frontend/react-redux/node_modules
