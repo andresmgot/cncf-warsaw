@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cat func.go
-cat package.json
 
 kubectl create ns demo5
 
@@ -14,6 +13,7 @@ kubectl create secret -n demo5 docker-registry kubeless-registry-credentials \
   --docker-email=user@example.com
 
 kubectl edit configmap -n kubeless kubeless-configmap
+
 # Add secret name: kubeless-registry-credentials
 # Enable function builder
 
@@ -27,7 +27,7 @@ kubeless function deploy demo5 \
   -f func.go \
   --handler func.Hello \
   -n demo5 \
-  -r golang1.10
+  -r go1.10
 
 # Watch deployments
 
@@ -40,4 +40,4 @@ kubeless function deploy demo5 \
   -f func.go \
   --handler func.Hello \
   -n demo5 \
-  -r golang1.10
+  -r go1.10

@@ -8,6 +8,12 @@ kubectl create ns demo3
 
 kubectl apply -f https://github.com/kubeless/kafka-trigger/releases/download/v1.0.2/kafka-zookeeper-v1.0.2.yaml 
 
+# Create Kafka topic and publish a message
+
+kubeless topic create demo3
+
+kubeless topic publish --topic demo3-topic --data "Hello World!"
+
 # Deploy function and trigger
 
 kubeless function deploy demo3 \
@@ -20,12 +26,6 @@ kubeless trigger kafka create demo3 \
   -n demo3 \
   --function-selector function=demo3 \
   --trigger-topic demo3-topic
-
-# Create Kafka topic and publish a message
-
-kubeless topic create demo3
-
-kubeless topic publish --topic demo3-topic --data "Hello World!"
 
 # Check message
 
